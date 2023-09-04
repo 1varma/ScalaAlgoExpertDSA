@@ -1,19 +1,19 @@
 package in.algo.easy
 
+import scala.collection.mutable.Map
+
 object TournamentWinner {
   private def tournamentWinner(competitions: List[List[String]], results: List[Int]): String = {
-    val teamPoints = scala.collection.mutable.Map[String, Int]().withDefaultValue(0)
+    val teamPoints = Map[String, Int]().withDefaultValue(0)
 
-    for ((matchup, result) <- competitions.zip(results)) {
-      val homeTeam = matchup(0)
+    for ((matchup, result) <- competitions.zip(results)) do
+      val homeTeam = matchup.head
       val awayTeam = matchup(1)
 
-      if (result == 1) {
+      if result == 1 then
         teamPoints(homeTeam) += 3
-      } else {
+      else
         teamPoints(awayTeam) += 3
-      }
-    }
 
     val winner = teamPoints.maxBy(_._2)
     winner._1
