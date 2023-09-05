@@ -1,6 +1,5 @@
 package in.algo.easy
 
-import in.algo.easy.BST
 import scala.collection.mutable
 
 object branchSum {
